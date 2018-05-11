@@ -17,4 +17,6 @@
 文档：http://www.tornadoweb.cn/
 
 ### 2. 安装
+    ```bash
     pip install tornado
+    ```
