@@ -14,7 +14,9 @@
 很多公司选择Tornado:
 	FriendFeed FaceBook,Quora，国内的知乎
 
-文档：http://www.tornadoweb.cn/
+官网：http://www.tornadoweb.cn/、
+官方文档： http://www.tornadoweb.org/en/stable/index.html
+中文文档： http://www.tornadoweb.cn/documentation
 
 ### 2. 安装
     ```bash
