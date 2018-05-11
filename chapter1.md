@@ -41,3 +41,6 @@
         app.listen(8888)
         tornado.ioloop.IOLoop.current().start()
     ```
+    
+    
+### 4.异步
