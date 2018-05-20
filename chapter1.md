@@ -25,7 +25,7 @@
     5. 非WSGI部署
     6. 大型站点的接口服务框架
 
-### 学习Tornad学什么？
+### 学习Tornado学什么？
 1. 异步HTTPServer 和HTTPClient
 1. 向下：异步技术支持IOLoop 和 IOStream
 1. 向上：HTTPServer的基础上Web 框架
