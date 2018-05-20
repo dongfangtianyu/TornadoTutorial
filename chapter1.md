@@ -27,8 +27,9 @@
 
 ### 学习Tornad学什么？
 1. 异步HTTPServer 和HTTPClient
-1. 异步技术支持IOLoop 和 IOStream
-1. HTTPServer的基础上Web 框架
+1. 向下：异步技术支持IOLoop 和 IOStream
+1. 向上：HTTPServer的基础上Web 框架
+1. 整体：基于协程的异步编程
 
 
 
