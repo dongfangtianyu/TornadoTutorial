@@ -25,6 +25,13 @@
     5. 非WSGI部署
     6. 大型站点的接口服务框架
 
+### 学习Tornad学什么？
+1. 异步HTTPServer 和HTTPClient
+1. 异步技术支持IOLoop 和 IOStream
+1. HTTPServer的基础上Web 框架
+
+
+
 很多公司选择Tornado:
 	FriendFeed FaceBook,Quora，国内的知乎
 
