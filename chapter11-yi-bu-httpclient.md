@@ -142,6 +142,6 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
     为什么？
     ```python
         async def worker():
-        while True:
-            await fetch_url()
+            while True:
+                await fetch_url()
     ```
