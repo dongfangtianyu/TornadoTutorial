@@ -139,9 +139,15 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
 2. f
 
     修改结束后发现，程序变成同步了！
-    发生了什么？？
+    发生了什么？？ 下面的代码是恢复
     ```python
         async def worker():
             while True:
                 await fetch_url()
+    ```
+    ```python
+        @gen.coroutine
+    def worker():
+        while True:
+            yield fetch_url()
     ```
