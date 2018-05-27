@@ -147,7 +147,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
     ```
     ```python
         @gen.coroutine
-    def worker():
-        while True:
-            yield fetch_url()
+        def worker():
+            while True:
+                yield fetch_url()
     ```
