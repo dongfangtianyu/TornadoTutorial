@@ -139,7 +139,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
 2. f
 
     修改结束后发现，程序变成同步了！
-    为什么？
+    发生了什么？？
     ```python
         async def worker():
             while True:
