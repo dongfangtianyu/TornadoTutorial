@@ -127,4 +127,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
         io_loop = ioloop.IOLoop.current()
         io_loop.run_sync(main)
     ```
+    
+1. async / await
 
+    async 和 await 关键字是PEP 492提出来的，主要目标是解决“生成器（generator）”和“协程（Coroutine ）”，区别不明确吗、容易搞糊涂的问题。
