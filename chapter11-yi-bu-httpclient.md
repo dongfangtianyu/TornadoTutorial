@@ -135,3 +135,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
      - 首先把所有的yield 替换成await ，
      - 在使用了await 的函数使前加async 
      - 讲raise gen.Return 替换成return
+     
+2. f
+
+    修改结束后发现，
