@@ -145,6 +145,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
             while True:
                 await fetch_url()
     ```
+    恢复成
     ```python
         @gen.coroutine
         def worker():
