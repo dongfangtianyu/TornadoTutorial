@@ -132,4 +132,6 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
 
     async 和 await 关键字是PEP 492提出来的，主要目标是解决“生成器（generator）”和“协程（Coroutine ）”，都依赖yield、区别不明确、容易搞糊涂的问题。
 
-    首先把所有的yield 替换成await ， 再使用了await 的函数使前加async 
+     - 首先把所有的yield 替换成await ，
+     - 在使用了await 的函数使前加async 
+     - 讲raise gen.Return 替换成return
