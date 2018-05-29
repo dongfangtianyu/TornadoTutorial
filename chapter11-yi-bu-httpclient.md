@@ -153,4 +153,4 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
                 yield fetch_url()
     ```
     
-    重新执行，按需程序重新恢复了异步的能力
+    重新执行，发现程序重新恢复了异步的能力
