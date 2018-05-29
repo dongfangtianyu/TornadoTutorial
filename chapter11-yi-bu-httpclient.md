@@ -155,7 +155,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
     
     重新执行，发现程序重新恢复了异步的能力，那么worker 究竟是什么？
     ```python
-    print worker()
+    print(worker())
     ```
     ```bash
     <Future pending cb=[_make_coroutine_wrapper.<locals>.wrapper.<locals>.<lambda>() at tornado\gen.py:336]>
