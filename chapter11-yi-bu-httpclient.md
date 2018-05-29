@@ -136,7 +136,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
      - 在使用了await 的函数使前加async 
      - 讲raise gen.Return 替换成return
      
-2. f
+2. Future
 
     修改结束后发现，程序变成同步了！
     发生了什么？？ 下面是修改后的代码
