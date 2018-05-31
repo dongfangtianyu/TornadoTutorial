@@ -12,4 +12,5 @@
 * [chapter9 聊天室项目:  用户面板](chapter9.md)
 * [chapter10 聊天室项目:  生产环境部署](chapter10.md)
 * [chapter11: 异步HTTPClient](chapter11-yi-bu-httpclient.md)
+* [chapter12:常见IO模型](chapter12chang-jian-io-mo-xing.md)
 
