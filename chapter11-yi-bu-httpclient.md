@@ -133,6 +133,9 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
         io_loop.run_sync(main)
     ```
     
+0. 执行
+    >Done in 11 seconds, fetched 127 URLs.
+    
 1. async / await
 
     async 和 await 关键字是PEP 492提出来的，主要目标是解决“生成器（generator）”和“协程（Coroutine ）”，都依赖yield、区别不明确、容易搞糊涂的问题。
