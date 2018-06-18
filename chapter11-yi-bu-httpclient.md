@@ -165,3 +165,13 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
     ```bash
     <Future pending cb=[_make_coroutine_wrapper.<locals>.wrapper.<locals>.<lambda>() at tornado\gen.py:336]>
     ```
+
+3.  Task
+    ```python
+    async def worker():
+    while True:
+        a = fetch_url()
+        await a
+   for _ in range(concurrency):
+        loop.create_task(worker()) 
+    ```
