@@ -175,3 +175,6 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
    for _ in range(concurrency):
         loop.create_task(worker()) 
     ```
+
+    恢复异步效果
+    > Done in 12 seconds, fetched 127 URLs.
