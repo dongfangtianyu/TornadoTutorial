@@ -133,7 +133,7 @@ http://tornado-zh-cn.readthedocs.io/zh_CN/latest/guide/queues.html
         io_loop.run_sync(main)
     ```
     
-0. 执行
+0. 执行 平均每秒完成10个url的抓取
     >Done in 11 seconds, fetched 127 URLs.
     
 1. async / await
