@@ -26,7 +26,7 @@
     6. 大型站点的接口服务框架
 
 ### 学习Tornado学什么？
-> 课件： 1.Tornado知识框架.xmind
+> 课件： Tornado知识框架.xmind
 
 1. 异步HTTPServer 和 HTTPClient，WebSocket 、异步的ORM
 1. 向下：异步技术支持IOLoop 和 IOStream
