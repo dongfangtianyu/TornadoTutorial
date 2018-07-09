@@ -8,6 +8,7 @@
 首先我们回顾一下，在Python非异步编程中 怎么使用数据，这里分别用redis 和mysql 举例
 
 1. tornado 中使用redis
+    1. ```pip install redis-py```
 2. tornado 中使用mysql
 
 
