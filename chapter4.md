@@ -10,6 +10,7 @@
 1. tornado 中使用redis
     1. ```pip install redis-py```
 2. tornado 中使用mysql
+    1. `pip install mysqlclient`
 
 
 ### 如何使用异步的方式连接数据库，使用ORM
