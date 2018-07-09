@@ -4,7 +4,7 @@
 * [chapter1 Torando 框架介绍](chapter1.md)
 * [chapter2 常见IO模型](chapter2.md)
 * [chapter3 异步HTTPClient](chapter3.md)
-* [chapter4 异步ORM](chapter4.md)
+* [chapter4 连接数据库](chapter4.md)
 * [chapter5 WebSocket](chapter5.md)
 * [chapter6 Web框架](chapter6.md)
 * [chapter7 异步测试](chapter7.md)
