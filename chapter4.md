@@ -17,14 +17,12 @@
 ### 在Python中 异步的方式连接数据库
 
 > 课件：4.async_db.py
+> 课件：4.Request.http
 
-3. 使用异步 aioredis
-
-    1. ```pip install  aioredis```
-
-4. 使用peewee_async
-
-    1. ```pip install aiomysql```
+注意事项：
+1. 异步库需要asyncio的loop驱动
+2. Tornado 5.0之后的版本。默认使用asyncio的loop
+3. 数据库在使用之前，建立连接
 
 ### 在Tornado中 非异步的方式连接数据库
 > 课件: 4.async_db_tornado.py
