@@ -17,9 +17,8 @@
 ### 如何使用异步的方式连接数据库，使用ORM
 > 课件：4.async_db.py
 
-
-
 3. 使用异步 aioredis
+
     1. ```pip install  aioredis```
 
 4. 使用peewee_async
