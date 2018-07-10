@@ -4,7 +4,7 @@
 > 对于异步编程，我们是否一定需要异步ORM？
 > 一般而言，这个答案是否定的。但是如果你需要使用异步的方式连接数据库的时候，可以关注一下
 
-### 在Python 怎么使用数据
+### 在Python中 非异步的方式连接数据库
 首先我们回顾一下，在Python非异步编程中 怎么使用数据，这里分别用redis 和mysql 举例
 > 课件：4.sync_db.py
 
@@ -14,7 +14,8 @@
     1. `pip install mysqlclient`
 
 
-### 如何使用异步的方式连接数据库，使用ORM
+### 在Python中 异步的方式连接数据库
+
 > 课件：4.async_db.py
 
 3. 使用异步 aioredis
@@ -24,6 +25,11 @@
 4. 使用peewee_async
 
     1. ```pip install aiomysql```
+
+### 在Tornado中 非异步的方式连接数据库
+> 课件: 4.async_db_tornado.py
+
+
 
 
 ## 扩展阅读
