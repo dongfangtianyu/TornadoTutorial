@@ -27,7 +27,7 @@
 
 
 ### 在Tornado中 非异步的方式连接数据库
-> 课件: 4.async_db_tornado.py
+> 课件：4.async_db_tornado.py
 > 课件：4.Request.http
 
 注意事项：
