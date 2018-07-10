@@ -8,15 +8,26 @@
 首先我们回顾一下，在Python非异步编程中 怎么使用数据，这里分别用redis 和mysql 举例
 > 课件：4.sync_db.py
 
-1. tornado 中使用redis
+1. python中使用redis
     1. ```pip install redis-py```
-2. tornado 中使用mysql
+    
+2. python中使用mysql
     1. `pip install mysqlclient`
 
 
 ### 在Python中 异步的方式连接数据库
 
 > 课件：4.async_db.py
+
+1. python中使用redis
+    1. ```pip install aioredis```
+    
+2. python中使用mysql
+    1. `pip install aiomysql`
+
+
+### 在Tornado中 非异步的方式连接数据库
+> 课件: 4.async_db_tornado.py
 > 课件：4.Request.http
 
 注意事项：
@@ -24,8 +35,6 @@
 2. Tornado 5.0之后的版本。默认使用asyncio的loop
 3. 数据库在使用之前，建立连接
 
-### 在Tornado中 非异步的方式连接数据库
-> 课件: 4.async_db_tornado.py
 
 
 
