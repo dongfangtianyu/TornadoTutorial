@@ -37,3 +37,14 @@ if __name__ == "__main__":
     ioloop.IOLoop.current().start()  # 启动事件循环，程序就可以一直运行下去了
 
 ```
+
+##### 1.2 RequestHandler 其他方法
+
+刚才程序的执行顺序：
+
+1. 【ioloop】使程序一直运行，并在收到请求的的时候通知【Application】
+
+2. 【Application】 的实例收到新的请求会根据【router】调用合适的【RequestHandler】（tornado/routing.py:331）
+
+3. 【RequestHandler】根据 request.method 调用同名的 【实例方法】 （/tornado/web.py:1590）
+
