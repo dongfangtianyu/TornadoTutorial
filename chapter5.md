@@ -13,32 +13,34 @@
 
 #### 1. RequestHandler
 
-##### 1.1 helloword
+##### 1.1 Hello Word
 
 ```python
 from tornado import ioloop, web
 
 
-class MainHandler(web.RequestHandler):  # 1. 定义 Handler，处理请求
-    def get(self):                      # 2. 定义http请求发放同名的方法，根据http方法自动调用
-        self.write("Hello, world")      # 3， 调用父类方法，创建响应内容
-        self.set_status(201)            # 4.  调用父类方法，指定响应状态码
+class MainHandler(web.RequestHandler):  # 1.1 定义 Handler，处理请求
+    def get(self):                      # 1.2 定义http请求发放同名的方法，根据http方法自动调用
+        data = self.get_argument("name", "None")  # 1.3 接收访问的参数
+        self.write(f"Hello, world, you input {data}")      # 1.4 调用父类方法，创建响应内容
+        self.set_status(201)            # 1.5  调用父类方法，指定响应状态码
 
 
 def make_app():
     router = [
-        (r"/", MainHandler),             # 5. 将处理器和 根路径 "/"关联起来，组成路由映射表
+        (r"/", MainHandler),             # 将处理器和 根路径 "/"关联起来，组成路由映射表
     ]
-    return web.Application(router)       # 6. 实例化Application ，并接收路由表
+    return web.Application(router)       # 2.1 实例化Application ，并接收路由表
 
 
 if __name__ == "__main__":
     app = make_app()  # 创建app
-    app.listen(8888)  # 指定端口
+    app.listen(8888)  # 2.2 指定端口
     ioloop.IOLoop.current().start()  # 启动事件循环，程序就可以一直运行下去了
 ```
 
 ##### 1.2 RequestHandler 的方法
+
 > 主要业务逻的 在RequestHandler 中完成
 
 1.2.1 刚才程序的执行顺序：
@@ -59,25 +61,25 @@ if __name__ == "__main__":
 * HEAD
 * OPTIONS
 
-  所以RequestHandler中可以重写父类的以上方法，处理相应的请求。
-  注意：如果要处理上面列表之外的方法，需要先扩展SUPPORTED_METHODS属性,非则会响应 HTTP 405
+  所以RequestHandler中可以重写父类的以上方法，处理相应的请求。  
+  注意：如果要处理上面列表之外的方法，需要先扩展SUPPORTED\_METHODS属性,非则会响应 HTTP 405
+
   ```python
   class WebDAVHandler(RequestHandler):
     SUPPORTED_METHODS = RequestHandler.SUPPORTED_METHODS + ('PROPFIND',)
 
     def propfind(self):
         pass
-        
-    ```
+  ```
 
 1.2.3 此外，RequestHandler还有其他的方法在这个过程中被执行，都可以重写
 
 | 执行时机 | 执行方法 |
 | :--- | :--- |
-| RequestHandler 实例化 |initialize  |
-| 找到处理方法 |prepare  |
-| 调用处理方法 |get/post/put/delete/……  |
-| 请求处理完成 |on_finish  |
+| RequestHandler 实例化 | initialize |
+| 找到处理方法 | prepare |
+| 调用处理方法 | get/post/put/delete/…… |
+| 请求处理完成 | on\_finish |
 
 1.2.4 除了有框架调用的方法，还有些方法是可以在处理器中被主动调用，例如：
 
@@ -85,36 +87,36 @@ if __name__ == "__main__":
 def get(self): 
     self.write("Hello, world") # 创建响应内容
     self.set_status(201)  指定响应状态码
-
 ```
 
-    1. 获取输入
-| 方法 | 用户 |
-| :--- | :--- |
-| get_argument| 获取参数 （与get_query_argument 相同）|
-| get_arguments| 获取参数的多个值，返回值是列表|
-| get_query_argument| 获取查询字符串 （在url中）|
-| get_body_argument| 获取请求参数（在body中）|
-| get_argument| 设置响应状态码|
+1. 获取输入
+   | 方法 | 用户 |
+   | :--- | :--- |
+   | get\_argument | 获取参数 （与get\_query\_argument 相同） |
+   | get\_arguments | 获取参数的多个值，返回值是列表 |
+   | get\_query\_argument | 获取查询字符串 （在url中） |
+   | get\_body\_argument | 获取请求参数（在body中） |
+   | get\_argument | 设置响应状态码 |
 
 
-    2. 生成输出
-| 方法 | 用户 |
-| :--- | :--- |
-| set_status | 设置响应状态码|
-| set_header | 设置响应头|
-| clear_header| 清除已设置的响应头|
-| write| 设置响应内容 | 
-| clear| 清除已设置的响应头和响应正文|
-| flush| 输出已设置的响应内容|
-| finish | 结束此次请求|
-| render| 调用模板生成响应内容，并结束会话|
-|redirect| 重定向|
+1. 生成输出
+   | 方法 | 用户 |
+   | :--- | :--- |
+   | set\_status | 设置响应状态码 |
+   | set\_header | 设置响应头 |
+   | clear\_header | 清除已设置的响应头 |
+   | write | 设置响应内容 |
+   | clear | 清除已设置的响应头和响应正文 |
+   | flush | 输出已设置的响应内容 |
+   | finish | 结束此次请求 |
+   | render | 调用模板生成响应内容，并结束会话 |
+   | redirect | 重定向 |
 
-1.3 RequestHandler 的属性
+#### 1.3 RequestHandler 的属性
 
-
+\# todo
 
 #### 2. Application
+
 
 
