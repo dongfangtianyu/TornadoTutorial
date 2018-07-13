@@ -1,14 +1,15 @@
 # Web框架
+
 > Web程序是最常见的网络程序，和之前的HTTPClient不同的是，Web程序属于HTTPServer，最大的区别在于，Server程序为 等待客户端的访问，是需要一直保持运行的。并且为了支持多个客户端同时进行的访问，异步显得比较重要
 
-
 ### 主要内容
+
 1. RequestHandler
 2. Application
 3. 静态文件
 4. 模板
 5. 路由
-5. 彩蛋: HTTPServer
+6. 彩蛋: HTTPServer
 
 #### 1. RequestHandler
 
@@ -35,16 +36,38 @@ if __name__ == "__main__":
     app = make_app()  # 创建app
     app.listen(8888)  # 指定端口
     ioloop.IOLoop.current().start()  # 启动事件循环，程序就可以一直运行下去了
-
 ```
 
-##### 1.2 RequestHandler 其他方法
+##### 1.2 RequestHandler 的方法
 
-刚才程序的执行顺序：
+1.2.1 刚才程序的执行顺序：
 
 1. 【ioloop】使程序一直运行，并在收到请求的的时候通知【Application】
 
-2. 【Application】 的实例收到新的请求会根据【router】调用合适的【RequestHandler】（tornado/routing.py:331）
+2. 【Application】 的实例收到新的请求会根据【router】，实例化合适的【RequestHandler】（tornado/routing.py:331）
 
-3. 【RequestHandler】根据 request.method 调用同名的 【实例方法】 （/tornado/web.py:1590）
+3. 【RequestHandler】根据 request 调用 method同名的 【实例方法】 （/tornado/web.py:1590）
+
+1.2.2 其中常用的request.method有 （tornado/web.py:162）：
+
+* POST
+* DELETE
+* GET
+* PUT
+* PATCH
+* HEAD
+* OPTIONS
+
+  所以RequestHandler中可以重写父类的以上方法，处理相应的请求
+
+1.2.3 此外，RequestHandler还有其他的方法在这个过程中被执行，都可以重写
+
+| 执行时机 | 执行方法 |
+| :--- | :--- |
+| RequestHandler 实例化 |initialize  |
+| 找到处理方法， 调用前|prepare  |
+| 调用处理方法 |get/post/put/delete/……  |
+| 请求处理完成 |on_finish  |
+
+
 
