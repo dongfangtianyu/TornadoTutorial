@@ -99,6 +99,7 @@ def get(self):
    | get\_body\_argument | 获取请求参数（在body中） |
    | get\_argument | 设置响应状态码 |
 
+
 1. 生成输出
    | 方法 | 用户 |
    | :--- | :--- |
