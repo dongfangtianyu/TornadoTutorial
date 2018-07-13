@@ -39,6 +39,7 @@ if __name__ == "__main__":
 ```
 
 ##### 1.2 RequestHandler 的方法
+> 主要业务逻的 在RequestHandler 中完成
 
 1.2.1 刚才程序的执行顺序：
 
@@ -58,14 +59,15 @@ if __name__ == "__main__":
 * HEAD
 * OPTIONS
 
-  所以RequestHandler中可以重写父类的以上方法，处理相应的请求
+  所以RequestHandler中可以重写父类的以上方法，处理相应的请求。
+  注意：如果要处理上面列表之外的方法，需要先扩展SUPPORTED_METHODS属性
 
 1.2.3 此外，RequestHandler还有其他的方法在这个过程中被执行，都可以重写
 
 | 执行时机 | 执行方法 |
 | :--- | :--- |
 | RequestHandler 实例化 |initialize  |
-| 找到处理方法， 调用前|prepare  |
+| 找到处理方法 |prepare  |
 | 调用处理方法 |get/post/put/delete/……  |
 | 请求处理完成 |on_finish  |
 
