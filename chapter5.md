@@ -61,6 +61,14 @@ if __name__ == "__main__":
 
   所以RequestHandler中可以重写父类的以上方法，处理相应的请求。
   注意：如果要处理上面列表之外的方法，需要先扩展SUPPORTED_METHODS属性
+  ```python
+  class WebDAVHandler(RequestHandler):
+    SUPPORTED_METHODS = RequestHandler.SUPPORTED_METHODS + ('PROPFIND',)
+
+    def propfind(self):
+        pass
+        
+    ```
 
 1.2.3 此外，RequestHandler还有其他的方法在这个过程中被执行，都可以重写
 
@@ -71,5 +79,8 @@ if __name__ == "__main__":
 | 调用处理方法 |get/post/put/delete/……  |
 | 请求处理完成 |on_finish  |
 
+
+
+#### 1. Application
 
 
