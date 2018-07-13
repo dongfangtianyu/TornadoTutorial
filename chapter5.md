@@ -60,7 +60,7 @@ if __name__ == "__main__":
 * OPTIONS
 
   所以RequestHandler中可以重写父类的以上方法，处理相应的请求。
-  注意：如果要处理上面列表之外的方法，需要先扩展SUPPORTED_METHODS属性
+  注意：如果要处理上面列表之外的方法，需要先扩展SUPPORTED_METHODS属性,非则会响应 HTTP 405
   ```python
   class WebDAVHandler(RequestHandler):
     SUPPORTED_METHODS = RequestHandler.SUPPORTED_METHODS + ('PROPFIND',)
@@ -79,7 +79,36 @@ if __name__ == "__main__":
 | 调用处理方法 |get/post/put/delete/……  |
 | 请求处理完成 |on_finish  |
 
+1.2.4 除了有框架调用的方法，还有些方法是可以在处理器中被主动调用，例如：
 
+```python
+def get(self): 
+    self.write("Hello, world") # 创建响应内容
+    self.set_status(201)  指定响应状态码
+
+```
+
+    1. 获取输入
+| 方法 | 用户 |
+| :--- | :--- |
+| get_argument| 获取参数 （与get_query_argument 相同）|
+| get_arguments| 获取参数的多个值，返回值是列表|
+| get_query_argument| 获取查询字符串 （在url中）|
+| get_body_argument| 获取请求参数（在body中）|
+| get_argument| 设置响应状态码|
+
+
+    2. 生成输出
+| 方法 | 用户 |
+| :--- | :--- |
+| set_status | 设置响应状态码|
+| set_header | 设置响应头|
+| clear_header| 清除已设置的响应头|
+| write| 设置响应内容 | 
+| clear| 清除已设置的响应头和响应正文|
+| flush| 输出已设置的响应内容|
+| finish | 结束此次请求|
+| render| 调用模板生成响应内容，并结束会话|
 
 #### 1. Application
 
