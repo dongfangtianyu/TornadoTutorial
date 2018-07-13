@@ -6,9 +6,10 @@
 
 1. RequestHandler
 2. Application
-3. 静态文件
-4. 模板
 5. 路由
+6. 设置
+4. 模板
+5. 国际化
 6. 彩蛋: HTTPServer
 
 #### 1. RequestHandler
@@ -116,6 +117,9 @@ def get(self):
 \# todo
 
 #### 2. Application
+
+Application 是请求处理的集合。
+此类的实例是可以被调用的，被调用时，接受【request】，并根据【路由】找到合适的【RequestHandler】，处理请求 (tornado.web.Application#__call__)
 
 
 
