@@ -72,7 +72,7 @@ if __name__ == "__main__":
         pass
   ```
 
-1.2.3 此外，RequestHandler还有其他的方法在这个过程中被执行，都可以重写
+1.2.3 此外，RequestHandler还有其他的方法在这个过程中被执行，都可以在子类中重写
 
 | 执行时机 | 执行方法 |
 | :--- | :--- |
@@ -97,7 +97,6 @@ def get(self):
    | get\_query\_argument | 获取查询字符串 （在url中） |
    | get\_body\_argument | 获取请求参数（在body中） |
    | get\_argument | 设置响应状态码 |
-
 
 1. 生成输出
    | 方法 | 用户 |
