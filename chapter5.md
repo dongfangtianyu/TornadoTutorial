@@ -109,7 +109,12 @@ def get(self):
 | flush| 输出已设置的响应内容|
 | finish | 结束此次请求|
 | render| 调用模板生成响应内容，并结束会话|
+|redirect| 重定向|
 
-#### 1. Application
+1.3 RequestHandler 的属性
+
+
+
+#### 2. Application
 
 
