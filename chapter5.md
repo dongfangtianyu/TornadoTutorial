@@ -2,16 +2,19 @@
 
 > Web程序是最常见的网络程序，和之前的HTTPClient不同的是，Web程序属于HTTPServer，最大的区别在于，Server程序为 等待客户端的访问，是需要一直保持运行的。并且为了支持多个客户端同时进行的访问，异步显得比较重要
 
+> Tornado 的web分为2部分，HTTP server 接受请求， Application 处理请求。理论上这两部分都可以使用其他实现代替，但是Tornado建议使用它原生的搭配，所以我们不会刻意分离二者，
+
+> Web程序中，我们更多的，是使用工具实现各样功能，常见的概念有：路由、处理程序、模板
+
 ### 主要内容
 
 1. RequestHandler
 2. Application
-3. 路由
-4. 彩蛋：内置的Handler
-5. 设置
-6. 模板
-7. 国际化
-8. 彩蛋: HTTPServer
+3. 彩蛋：HTTPServer
+4. 路由
+5. 彩蛋：内置的Handler
+6. 设置
+7. 模板
 
 #### 1. RequestHandler
 
@@ -145,9 +148,92 @@ def make_app():
     return app
 ```
 
-##### 2.2 Application 的方法
+##### 2.2 Application 的内置方法
+
+Application 提供了一些内置方法，使得使用一些功能是调用方法就可以实现了。
+当然，我们也可以为Application 定义更多的方法，实现更多功能的便捷调用
 
 - listen
+    ``` 实例化HTTPSerer，使application能够```
 - add_handlers
+    ``` 增加更多的处理器```
 - reverse_url
-- log_request
+    ``` 根据name，返回url```
+
+
+#### 3.彩蛋：HTTPServer
+
+
+#### 4 路由
+
+
+##### 4.1 静态路由
+
+
+##### 4.2 动态路由
+
+
+##### 4.3 处理器传递跟多的参数
+
+
+
+#### 5. 彩蛋：内置的Handler
+
+
+#### 6. 设置
+
+
+#### 7. 模板
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
