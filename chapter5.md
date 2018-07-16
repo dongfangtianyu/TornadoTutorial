@@ -117,12 +117,19 @@ def get(self):
    | render | 调用模板生成响应内容，并结束会话 |
    | redirect | 重定向 |
 
-#### 1.3 RequestHandler 的属性
+#### 1.3 RequestHandler 其他 属性 和 方法 
 
-\# todo
+完整列表参阅 http://www.tornadoweb.org/en/stable/web.html#other
 
 #### 1.4 异步的 Handler
-1. 
+> 课件 5.tornado_handler_async.py
+
+在课件的实例代码中，同步和异步的区别体现在get方法中：
+
+1. Tornado默认使用单进程、单线程、异步的方式执行
+2. 在单线程的异步程序中，如果某个任务阻塞了，那么整个程序都会阻塞，要避免这种情况
+3. 编写异步的Handler， 其实就是编写异步的Python程序，比如asycn / await 关键字，调用非阻塞模块，等等
+
 
 
 #### 2. Application
