@@ -120,7 +120,8 @@ def get(self):
 #### 2. Application
 
 Application 是请求处理的集合。
-此类的实例是可以被调用的，被调用时，接受【request】，并根据【路由】找到合适的【RequestHandler】，处理请求 (tornado.web.Application#__call__)
+此类的实例是可以被调用的，被调用时，接受【request】，并根据【路由】找到合适的【RequestHandler】处理请求  (tornado.web.Application#__call__)
+
 
 
 
