@@ -119,7 +119,7 @@ def get(self):
 
 #### 1.3 RequestHandler 其他 属性 和 方法 
 
-完整列表参阅 http://www.tornadoweb.org/en/stable/web.html#other
+参阅 http://www.tornadoweb.org/en/stable/web.html#other
 
 #### 1.4 异步的 Handler
 > 课件 5.tornado_handler_async.py
