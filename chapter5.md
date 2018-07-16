@@ -6,11 +6,12 @@
 
 1. RequestHandler
 2. Application
-5. 路由
-6. 设置
-4. 模板
-5. 国际化
-6. 彩蛋: HTTPServer
+3. 路由
+4. 彩蛋：内置的Handler
+5. 设置
+6. 模板
+7. 国际化
+8. 彩蛋: HTTPServer
 
 #### 1. RequestHandler
 
@@ -117,11 +118,36 @@ def get(self):
 
 \# todo
 
+
 #### 2. Application
 
 Application 是请求处理的集合。
 此类的实例是可以被调用的，被调用时，接受【request】，并根据【路由】找到合适的【RequestHandler】处理请求  (tornado.web.Application#__call__)
 
+##### 2.1 如何实例化Application 
+另一版本的 make_app
+```python
 
+def make_app():
+    router = [
+        (r"/", MainHandler),             # 将 处理器 和 路径 关联起来，组成路由映射表
+    ]
+    host = "www.baidu.com"               # 为match host指定默认值，该值是为了配合application.add_handlers
+    transforms = []                      # 类似于django中间件，可以对响应进行二次处理 ，参考 tornado.web.OutputTransform
+    settings = {}                        # 设置选项
 
+    app = web.Application(handlers=router,
+                          default_host=host,
+                          transforms=transforms,
+                          **settings,
+                          )       # 6. 实例化Application ，并接收路由表
 
+    return app
+```
+
+##### 2.2 Application 的方法
+
+- listen
+- add_handlers
+- reverse_url
+- log_request
