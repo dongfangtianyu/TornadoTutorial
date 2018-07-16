@@ -172,7 +172,17 @@ Application 提供了一些内置方法，使得使用一些功能是调用方�
 
 
 #### 3.彩蛋：HTTPServer
+在Application 的listen 源代码如下（Tornado 5.1）：
+```python
+    def listen(self, port, address="", **kwargs):
+        from tornado.httpserver import HTTPServer
+        server = HTTPServer(self, **kwargs)
+        server.listen(port, address)
+        return server
+```
+可见，虽然表面是Application 的listen，然实际上是调用HTTPServer.listen 
 
+> 那么HTTPServer又 是什么呢？
 
 #### 4 路由
 
