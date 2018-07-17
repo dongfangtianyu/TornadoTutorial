@@ -182,7 +182,39 @@ Application 提供了一些内置方法，使得使用一些功能是调用方�
 ```
 可见，虽然表面是Application 的listen，然实际上是调用HTTPServer.listen 
 
-> 那么HTTPServer又 是什么呢？
+> 那么 HTTPServer 又是什么呢？
+
+**HTTPServer ** 是非阻塞的单线程HTTP服务器。
+它监听端口、接受请求，并转交给Application ，看起来和nginx或apche做同样的工作。
+不过，因为GIL的原因，通常我们会启动多个tornado进程，运行在负载均衡后面
+
+> HTTPServer 如何启动？
+
+- 简单的启动 ,也就是Application.listen所使用的方式
+    ```python
+    server = HTTPServer(app)
+    server.listen(8888)
+    ```
+- 多进程启动
+    ```python
+    server = HTTPServer(app)
+    server.bind(8888)
+    server.start(0)  # 给start方法的传参指定进程数，0表示根据CPU核心数确定，会forks多进程
+    ```
+    
+- 更灵活的多进程启动
+    ```python
+    sockets = tornado.netutil.bind_sockets(8888)
+    tornado.process.fork_processes(0) # 传参指定进程数，0表示根据CPU核心数确定
+    server = HTTPServer(app)
+    server.add_sockets(sockets) # 手动指定sockets
+    ```
+** 以上三种方式，看起来写法完全不同。但是背后是同一套执行逻辑。
+只不过简单的方法将这些逻辑包装隐藏了，而复杂的方法重新将这些逻辑暴露出来，并允许我们手动设定**
+
+通常情况下，我们不需要直接和HTTPServer打交道，而是通过Application间接的启动。
+不过，当你进行复杂的设定（比如用你改造过的HTTPServer启动应用）时，需要了解一下灵活的用法
+
 
 #### 4 路由
 
@@ -204,56 +236,3 @@ Application 提供了一些内置方法，使得使用一些功能是调用方�
 
 
 #### 7. 模板
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
