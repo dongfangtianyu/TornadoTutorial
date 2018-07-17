@@ -8,13 +8,13 @@
 
 ### 主要内容
 
-1. RequestHandler
-2. Application
-3. 彩蛋：HTTPServer
-4. 路由
-5. 彩蛋：内置的Handler
-6. 设置
-7. 模板
+1. RequestHandler      1.3
+2. Application         0.5
+3. 彩蛋：HTTPServer    0.2 -> 2
+4. 路由                0.7
+5. 彩蛋：内置的Handler 0.3 -> 1
+6. 设置                0.1
+7. 模板                0.9 -> 1
 
 #### 1. RequestHandler
 
@@ -352,8 +352,89 @@ router = [  # 定义路由映射
 ---
 
 #### 6. 设置
+除了handlers、default_host 、transforms，其他的Application构造参数都会作为设置被保存起来
+
+完整的设置选项请参阅：http://www.tornadoweb.org/en/stable/web.html#tornado.web.Application.settings
+这里我们先列一下常用的
+
+- cookie_secret   ：为cookie签名用的密钥，防止cookie被用户伪造
+- static_path  ： 指定静态文件存放路径
+- template_path： 指定模板文件存放路径
+- debug ： 开启调试模式
+
+```python
+impor os 
+BASE_DIR = os.path.dirname(__file__)
+settings = {
+    "cookie_secret": "sd*^%_Nn30NG%*BTq34905y7389vcnvbk,erjtherg",
+    "template_path": os.path.join(BASE_DIR, "templates"),
+    "static_path": os.path.join(BASE_DIR, "static"),
+    # todo 其他设置
+}
+web.Application(router, **settings)
+```
+
 
 #### 7. 模板
+模板一般指以及设置好格式，只差填充内容的数据，或者相似、相同内容已经准备好，只差差异性内容的数据。比如简历模板、合同模板、作文模板。
 
+在Web项目中，很多时候输出的内容是很相似的（html或者json），会常用到模板。业务代码生成好差异性内容后，用模块快速的生成最终的完整页面。
 
+创建的模板，保存在settings.template_path 指定的位置，好让tornado 找到
+
+##### 7.1 处理器 中使用模板
+> 课件 5.tornad_template
+
+```python
+class MainHandler(web.RequestHandler):
+
+    def get(self):
+        context = {"title": "MainHandler_Title"} # 通过模板渲染的内容
+        self.render("index.html", **context)
+```
+
+##### 7.2 模板的基本用法
+1. Python表达式
+
+    `{{ python表达式 或变量名 }}`
+    * 如果是变量名，会直接输出变量值
+    * 表达式可以是任意的python代码，意味要慎重检查模板代码。
+    * 最终输出的是表达式的返回值，注意`print(123)` 的返回值是None而不是123
+
+2. 注释 
+
+    `{# 注释内容 #}`
+    * 可以多行注释
+
+3. 标签
+
+    `{% 标签 %}`
+
+    * 可以看作一个函数在执行
+    * 内置标签 [清单](http://www.tornadoweb.org/en/stable/template.html#syntax-reference)
+
+4. 静态文件
+
+    `<link rel="stylesheet" href="{{ static_url('my.css') }}">`
+
+    * static_url是处理器的方法，用来根据文件名找到静态文件，并生成带hash的文件url
+    * 为什么可以在模板直接使用？因为已经提前放入了模板
+    * 实际上处理器的方法、属性，都可以在模板中使用，因为处理器也被放入模板了，只不过别名是handler
+    * 所以上面代码也可以写作 `<link rel="stylesheet" href="{{ handler.static_url('my.css') }}">`
+
+4. 模板继承
+
+    `{% extends "base.html" %}`
+
+5. 模板覆写
+
+    `{% block title %}New Title{% end %}` # 覆写父模板title 块的内容， 前提是父模板有这个block
+
+6. 模块引入
+
+    `{% include "left-menu.html" %}` \# left-menu.html的内容引入到当前位置
+
+    > 思考继承和引入的联系与区别：
+
+    > 多个页面共有的内容，可以考虑通过继承或引入来减少模板代码量，方便维护
 
