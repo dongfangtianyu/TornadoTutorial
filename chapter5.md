@@ -304,6 +304,7 @@ class SyncHandler(web.RequestHandler):
 
 
 #### 5. 彩蛋：内置的Handler
+在上面得例子当中，通过传递额外得参数，实现了一个了不得得事情 ^_^
 
 #### 6. 设置
 
