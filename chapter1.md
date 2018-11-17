@@ -40,40 +40,60 @@
 
 
 很多公司选择Tornado:
-	FriendFeed FaceBook,Quora，国内的知乎
+​	FriendFeed FaceBook,Quora，国内的知乎
 
 官方文档： http://www.tornadoweb.org/en/stable/index.html
 中文文档： http://www.tornadoweb.cn/documentation
 
 ### 2. 安装
-    ```bash
-    pip install tornado
-    ```
-    
-### 3. Helloword
-    ```python
-    import tornado.ioloop
-    import tornado.web
-    
-    class MainHandler(tornado.web.RequestHandler):
-        def get(self):
-            self.write("Hello, world")
-    
-    def make_app():
-        return tornado.web.Application([
-            (r"/", MainHandler),
-        ])
-    
-    if __name__ == "__main__":
-        app = make_app()
-        app.listen(8888)
-        tornado.ioloop.IOLoop.current().start()
-    ```
-    
-    
-### 4. 堵塞的请求
 
-### 5. 非堵塞的请求
+~~~bash
+pip install tornado
+~~~
 
+### 3. HelloWord
+
+```python
+from tornado import web, ioloop,
+
+
+class MainHandler(web.RequestHandler):
+    def get(self):
+        self.write("Hello, world")
+
+
+if __name__ == "__main__":
+    app = web.Application([
+        (r"/", MainHandler),
+    ])
+    app.listen(8888)
+    print("server run http://127.0.0.1:8888")
+    ioloop.IOLoop.current().start()
+```
+
+### 4. 阻塞的请求
+```python
+class SyncHandler(web.RequestHandler):
+
+    def get(self):
+        start = int(time.time())
+        time.sleep(3)
+
+        end = int(time.time())
+        self.write(f"耗时{end - start}, 开始时间{start},结束时间{end}")
+```
+
+### 5. 非阻塞的请求
+
+```python
+class ASyncHandler(web.RequestHandler):
+
+    async def get(self):
+        start = int(time.time())
+        await gen.sleep(3)
+
+        end = int(time.time())
+        self.write(f"耗时{end - start}, 开始时间{start},结束时间{end}")
+```
 
 
