@@ -2,7 +2,7 @@
 
 
 
-好的程序员应该为自己自己的代码写好测试。所有我们需要编写单元测试，验证之前完成的功能，这也为日后重构打下基础。
+好的程序员应该为自己自己的代码写好测试。所以我们需要编写单元测试，验证之前完成的功能，这也为日后重构打下基础。
 
 为了掌握这一节内容，我们需要先了解两个的知识点：
 
@@ -12,7 +12,7 @@
 关于异步的主要是内容是：事件循环、协程，更多内容可以回顾chapter 3，
 这里补充一些单元测测试的内容，以便对聊天室项目进行测试。
 
-**UnitTest ** 不仅仅是软件测试中一种方法，也是Python标准库提供的测试框架。
+**UnitTest** 不仅仅是软件测试中一种方法，也是Python标准库提供的测试框架。
 
 ### 1. 简单的测试用例
 
@@ -114,7 +114,7 @@ main()
 2. 协程调用之后产生协程对象（coroutine object ），但不会执行内部代码
 3. 通过事件循环运行协程里的代码
 
-所以一个本应该测试失败的用例的结果确实**测试通过**，因为测试代码根本没有执行，没有进行断言，没有异常，框架“误以为”测试通过，这个前面第一部分介绍过
+所以下面这个本应该测试失败的用例的，结果却是**测试通过**，因为测试代码根本没有执行，没有进行断言，没有异常，框架“误以为”测试通过，这个前面第一部分介绍过
 ```python
 class MyTestCase(unittest.TestCase): # 2. 创建测试用例
 
@@ -164,7 +164,8 @@ UnitTest的子类，增加了异步的支持
 AsyncTestCase的子类，增加了异步http server 和http client，
 其中:
 
-http serve 需要重写 `get_app`方法，并返回web.Application 的实例
+http serve 需要重写 `get_app`方法，并返回web.Application 的实例 
+
 http client 通过`self.fetch` 调用
 
 ```python
@@ -184,7 +185,7 @@ class TestHelloApp(AsyncHTTPTestCase):
         self.assertEqual(response.body, 'Hello, world')
 ```
 
-**注意**：http client 不是ws client，所以测试ws接口是 self.fetch 不适用
+**注意**：http client 不是ws client，所以测试ws接口时 self.fetch 不适用
 
 #### 5.1 AsyncHTTPSTestCase
 
