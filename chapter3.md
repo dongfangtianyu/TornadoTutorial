@@ -207,4 +207,6 @@
 3. 对比执行速度、代码差异
 
 
-
+### 练习
+使用tornado.httpclient.AsyncHTTPClient 编写一个异步爬虫，
+并统计平均每秒爬取的网址数

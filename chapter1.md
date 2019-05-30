@@ -96,4 +96,9 @@ class ASyncHandler(web.RequestHandler):
         self.write(f"耗时{end - start}, 开始时间{start},结束时间{end}")
 ```
 
+### 练习
 
+1. 使用Tonrado创建一个网页，监听端口9819
+2. 访问http://127.0.0.1:9819/ 时 显示当前的日期和时间
+3. 访问http://127.0.0.1:9819/sync 等待3秒后显示'hello'，在这时间中**不可以**访问首页
+4. 访问http://127.0.0.1:9819/async 等待3秒后显示`'hello'，在这时间中可以访问首页

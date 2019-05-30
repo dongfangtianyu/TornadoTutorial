@@ -7,7 +7,6 @@
 - 彩蛋：Websocket客户端
 - Websocket的负载均衡
 
-
 ----
 
 
@@ -120,7 +119,7 @@ router = [
 
 课件 6.tornado_websocket.py 实现了一个websocket 的“回音壁”程序，并处理了“连接建立”、 “连接断开”的情况
 >课件 6.tornado_websocket.py
-	
+
 
 
 
@@ -173,4 +172,9 @@ https://github.com/websocket-client/websocket-client/
 **移动到Tornado部署章节**
 
 
+
+### 练习
+
+1. 使用Tonrado实现一个websocket服务，为客户端发送北京时间
+2. 使用Tonrado实现一个websocket客户端，连接到练习1的服务端，获取时间并打印出来
 
